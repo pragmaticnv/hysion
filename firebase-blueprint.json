@@ -1,0 +1,100 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A user of the application, either a student or a teacher.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "role": { "type": "string", "enum": ["student", "teacher"] },
+        "rollNo": { "type": "string" },
+        "createdAt": { "type": "timestamp" },
+        "updatedAt": { "type": "timestamp" },
+        "lastLogin": { "type": "timestamp" },
+        "fullName": { "type": "string" },
+        "phoneNumber": { "type": "string" },
+        "dateOfBirth": { "type": "string" },
+        "address": { "type": "string" },
+        "emergencyContact": { "type": "string" },
+        "verificationStatus": { "type": "string", "enum": ["pending", "verified", "rejected"] },
+        "idCardData": { "type": "string", "description": "Base64 encoded image data of the student's ID card" },
+        "idCardUploadedAt": { "type": "string", "format": "date-time", "description": "ISO timestamp of when the ID card was uploaded" }
+      },
+      "required": ["uid", "email", "role", "createdAt"]
+    },
+    "Attendance": {
+      "title": "Attendance",
+      "description": "Attendance record for a student.",
+      "type": "object",
+      "properties": {
+        "studentUid": { "type": "string" },
+        "studentName": { "type": "string" },
+        "rollNo": { "type": "string" },
+        "date": { "type": "timestamp" },
+        "status": { "type": "string", "enum": ["present", "absent"] }
+      },
+      "required": ["studentUid", "studentName", "rollNo", "date", "status"]
+    },
+    "TestConnection": {
+      "title": "TestConnection",
+      "description": "A dummy document used for connectivity testing.",
+      "type": "object",
+      "properties": {
+        "ok": { "type": "boolean" }
+      }
+    },
+    "Course": {
+      "title": "Course",
+      "description": "Course content and modules.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "intro": { "type": "string" },
+        "sections": { "type": "array" },
+        "math": { "type": "object" },
+        "conclusion": { "type": "object" },
+        "modules": { "type": "array" }
+      },
+      "required": ["title", "subtitle", "intro", "sections", "modules"]
+    },
+    "Lesson": {
+      "title": "Lesson",
+      "description": "A custom lesson created by a teacher.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "teacherUid": { "type": "string" },
+        "modules": { "type": "array" },
+        "createdAt": { "type": "timestamp" }
+      },
+      "required": ["title", "description", "teacherUid", "modules", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "Stores user profiles and roles."
+    },
+    "/attendance/{attendanceId}": {
+      "schema": { "$ref": "#/entities/Attendance" },
+      "description": "Stores attendance records."
+    },
+    "/courses/{courseId}": {
+      "schema": { "$ref": "#/entities/Course" },
+      "description": "Stores course content and modules."
+    },
+    "/lessons/{lessonId}": {
+      "schema": { "$ref": "#/entities/Lesson" },
+      "description": "Stores custom lessons created by teachers."
+    },
+    "/test/{docId}": {
+      "schema": { "$ref": "#/entities/TestConnection" },
+      "description": "Used for connectivity verification."
+    }
+  }
+}

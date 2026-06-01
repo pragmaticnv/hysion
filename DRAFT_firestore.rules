@@ -1,0 +1,109 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // 0. Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- Helpers ---
+    
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isVerified() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    // Identify the platform owner/admin via email
+    function isAdminEmail() {
+      return isSignedIn() && request.auth.token.email == "rajhazarika29@gmail.com";
+    }
+
+    // Check if user is a teacher (either by email or by verified role)
+    function isTeacher() {
+      return isVerified() && (
+        isAdminEmail() || 
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'teacher')
+      );
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // --- Entity Validations ---
+
+    function isValidUser(data) {
+      return data.uid is string && data.uid.size() <= 128 &&
+             data.email is string && data.email.size() <= 256 &&
+             data.role in ['student', 'teacher'] &&
+             (data.displayName == null || (data.displayName is string && data.displayName.size() <= 256)) &&
+             (data.photoURL == null || (data.photoURL is string && data.photoURL.size() <= 1024)) &&
+             (data.rollNo == null || (data.rollNo is string && data.rollNo.size() <= 50)) &&
+             (data.idCardData == null || (data.idCardData is string && data.idCardData.size() <= 1000000)) && // 1MB limit
+             (data.idCardUploadedAt == null || data.idCardUploadedAt is string);
+    }
+
+    function isValidAttendance(data) {
+      return data.studentUid is string && data.studentUid.size() <= 128 &&
+             data.studentName is string && data.studentName.size() <= 256 &&
+             data.rollNo is string && data.rollNo.size() <= 50 &&
+             data.status in ['present', 'absent'];
+    }
+
+    // --- Collection Routes ---
+
+    match /users/{userId} {
+      allow get: if isOwner(userId) || isTeacher();
+      allow list: if isTeacher() || (isOwner(userId) && resource.data.uid == request.auth.uid);
+      
+      allow create: if isOwner(userId) && 
+                      isValidUser(incoming()) && 
+                      incoming().uid == userId &&
+                      incoming().createdAt == request.time;
+                      
+      allow update: if isOwner(userId) && 
+                      isValidUser(incoming()) &&
+                      incoming().uid == existing().uid &&
+                      incoming().role == existing().role &&
+                      incoming().createdAt == existing().createdAt &&
+                      (
+                        // Allow updating all fields except UID, role, and createdAt
+                        incoming().diff(existing()).affectedKeys().hasOnly(['displayName', 'photoURL', 'rollNo', 'idCardData', 'idCardUploadedAt', 'lastLogin'])
+                      );
+    }
+
+    match /attendance/{attendanceId} {
+      allow read: if isTeacher() || (isVerified() && request.auth.uid == existing().studentUid);
+      allow create: if isTeacher() && isValidAttendance(incoming()) && incoming().date == request.time;
+      allow update: if isTeacher() && isValidAttendance(incoming()) && incoming().studentUid == existing().studentUid;
+      allow delete: if isTeacher();
+    }
+
+    match /courses/{courseId} {
+      allow read: if isSignedIn();
+      allow write: if isTeacher();
+    }
+    
+    match /test/{docId} {
+       allow get: if true;
+       allow write: if false;
+    }
+  }
+}

@@ -1,0 +1,1192 @@
+const elements = [
+  {
+    "symbol": "H",
+    "name": "Hydrogen",
+    "number": 1,
+    "group": "diatomic",
+    "col": 1,
+    "row": 1,
+    "mass": 1.008,
+    "summary": "The lightest element, essential for life and stars."
+  },
+  {
+    "symbol": "He",
+    "name": "Helium",
+    "number": 2,
+    "group": "noble",
+    "col": 18,
+    "row": 1,
+    "mass": 4.0026,
+    "summary": "Second most abundant element, used in balloons and cooling."
+  },
+  {
+    "symbol": "Li",
+    "name": "Lithium",
+    "number": 3,
+    "group": "alkali",
+    "col": 1,
+    "row": 2,
+    "mass": 6.94,
+    "summary": "Lightest metal, widely used in rechargeable batteries."
+  },
+  {
+    "symbol": "Be",
+    "name": "Beryllium",
+    "number": 4,
+    "group": "alkaline",
+    "col": 2,
+    "row": 2,
+    "mass": 9.0122,
+    "summary": "Strong, lightweight metal used in aerospace and X-ray windows."
+  },
+  {
+    "symbol": "B",
+    "name": "Boron",
+    "number": 5,
+    "group": "metalloid",
+    "col": 13,
+    "row": 2,
+    "mass": 10.81,
+    "summary": "Used in fiberglass, detergents, and control rods in nuclear reactors."
+  },
+  {
+    "symbol": "C",
+    "name": "Carbon",
+    "number": 6,
+    "group": "polyatomic",
+    "col": 14,
+    "row": 2,
+    "mass": 12.011,
+    "summary": "The basis of all known life, found in diamonds and graphite."
+  },
+  {
+    "symbol": "N",
+    "name": "Nitrogen",
+    "number": 7,
+    "group": "diatomic",
+    "col": 15,
+    "row": 2,
+    "mass": 14.007,
+    "summary": "Makes up 78% of Earth's atmosphere, essential for fertilizers."
+  },
+  {
+    "symbol": "O",
+    "name": "Oxygen",
+    "number": 8,
+    "group": "diatomic",
+    "col": 16,
+    "row": 2,
+    "mass": 15.999,
+    "summary": "Vital for respiration and combustion, makes up 21% of the air."
+  },
+  {
+    "symbol": "F",
+    "name": "Fluorine",
+    "number": 9,
+    "group": "diatomic",
+    "col": 17,
+    "row": 2,
+    "mass": 18.998,
+    "summary": "Most reactive element, used in toothpaste and refrigerants."
+  },
+  {
+    "symbol": "Ne",
+    "name": "Neon",
+    "number": 10,
+    "group": "noble",
+    "col": 18,
+    "row": 2,
+    "mass": 20.18,
+    "summary": "Inert gas famous for its bright orange-red glow in signs."
+  },
+  {
+    "symbol": "Na",
+    "name": "Sodium",
+    "number": 11,
+    "group": "alkali",
+    "col": 1,
+    "row": 3,
+    "mass": 22.99,
+    "summary": "Highly reactive metal, essential for nerve function (as salt)."
+  },
+  {
+    "symbol": "Mg",
+    "name": "Magnesium",
+    "number": 12,
+    "group": "alkaline",
+    "col": 2,
+    "row": 3,
+    "mass": 24.305,
+    "summary": "Lightweight metal used in alloys and vital for biological processes."
+  },
+  {
+    "symbol": "Al",
+    "name": "Aluminium",
+    "number": 13,
+    "group": "post-transition",
+    "col": 13,
+    "row": 3,
+    "mass": 26.982,
+    "summary": "Abundant metal used in packaging, construction, and transport."
+  },
+  {
+    "symbol": "Si",
+    "name": "Silicon",
+    "number": 14,
+    "group": "metalloid",
+    "col": 14,
+    "row": 3,
+    "mass": 28.085,
+    "summary": "Key component of semiconductors, glass, and ceramics."
+  },
+  {
+    "symbol": "P",
+    "name": "Phosphorus",
+    "number": 15,
+    "group": "polyatomic",
+    "col": 15,
+    "row": 3,
+    "mass": 30.974,
+    "summary": "Essential for DNA and ATP, used in matches and fertilizers."
+  },
+  {
+    "symbol": "S",
+    "name": "Sulfur",
+    "number": 16,
+    "group": "polyatomic",
+    "col": 16,
+    "row": 3,
+    "mass": 32.06,
+    "summary": "Yellow nonmetal used in gunpowder, batteries, and vulcanizing rubber."
+  },
+  {
+    "symbol": "Cl",
+    "name": "Chlorine",
+    "number": 17,
+    "group": "diatomic",
+    "col": 17,
+    "row": 3,
+    "mass": 35.45,
+    "summary": "Toxic gas used for water purification and in PVC plastics."
+  },
+  {
+    "symbol": "Ar",
+    "name": "Argon",
+    "number": 18,
+    "group": "noble",
+    "col": 18,
+    "row": 3,
+    "mass": 39.948,
+    "summary": "Inert gas used in lighting and as a protective atmosphere."
+  },
+  {
+    "symbol": "K",
+    "name": "Potassium",
+    "number": 19,
+    "group": "alkali",
+    "col": 1,
+    "row": 4,
+    "mass": 39.098,
+    "summary": "Essential mineral for cell function and plant growth."
+  },
+  {
+    "symbol": "Ca",
+    "name": "Calcium",
+    "number": 20,
+    "group": "alkaline",
+    "col": 2,
+    "row": 4,
+    "mass": 40.078,
+    "summary": "Vital for bones and teeth, used in cement and steelmaking."
+  },
+  {
+    "symbol": "Sc",
+    "name": "Scandium",
+    "number": 21,
+    "group": "transition",
+    "col": 3,
+    "row": 4,
+    "mass": 44.956,
+    "summary": "Used in aerospace components and high-intensity lamps."
+  },
+  {
+    "symbol": "Ti",
+    "name": "Titanium",
+    "number": 22,
+    "group": "transition",
+    "col": 4,
+    "row": 4,
+    "mass": 47.867,
+    "summary": "Strong, corrosion-resistant metal used in implants and aircraft."
+  },
+  {
+    "symbol": "V",
+    "name": "Vanadium",
+    "number": 23,
+    "group": "transition",
+    "col": 5,
+    "row": 4,
+    "mass": 50.942,
+    "summary": "Used to strengthen steel and in flow batteries."
+  },
+  {
+    "symbol": "Cr",
+    "name": "Chromium",
+    "number": 24,
+    "group": "transition",
+    "col": 6,
+    "row": 4,
+    "mass": 51.996,
+    "summary": "Used in stainless steel and for shiny chrome plating."
+  },
+  {
+    "symbol": "Mn",
+    "name": "Manganese",
+    "number": 25,
+    "group": "transition",
+    "col": 7,
+    "row": 4,
+    "mass": 54.938,
+    "summary": "Essential for steel production and battery manufacturing."
+  },
+  {
+    "symbol": "Fe",
+    "name": "Iron",
+    "number": 26,
+    "group": "transition",
+    "col": 8,
+    "row": 4,
+    "mass": 55.845,
+    "summary": "Most common element on Earth by mass, core of our civilization."
+  },
+  {
+    "symbol": "Co",
+    "name": "Cobalt",
+    "number": 27,
+    "group": "transition",
+    "col": 9,
+    "row": 4,
+    "mass": 58.933,
+    "summary": "Used in high-strength alloys and lithium-ion batteries."
+  },
+  {
+    "symbol": "Ni",
+    "name": "Nickel",
+    "number": 28,
+    "group": "transition",
+    "col": 10,
+    "row": 4,
+    "mass": 58.693,
+    "summary": "Used in stainless steel, coins, and rechargeable batteries."
+  },
+  {
+    "symbol": "Cu",
+    "name": "Copper",
+    "number": 29,
+    "group": "transition",
+    "col": 11,
+    "row": 4,
+    "mass": 63.546,
+    "summary": "Excellent conductor of electricity, used in wiring and plumbing."
+  },
+  {
+    "symbol": "Zn",
+    "name": "Zinc",
+    "number": 30,
+    "group": "transition",
+    "col": 12,
+    "row": 4,
+    "mass": 65.38,
+    "summary": "Used to galvanize steel and in die-casting alloys."
+  },
+  {
+    "symbol": "Ga",
+    "name": "Gallium",
+    "number": 31,
+    "group": "post-transition",
+    "col": 13,
+    "row": 4,
+    "mass": 69.723,
+    "summary": "Melts in your hand, used in semiconductors and LEDs."
+  },
+  {
+    "symbol": "Ge",
+    "name": "Germanium",
+    "number": 32,
+    "group": "metalloid",
+    "col": 14,
+    "row": 4,
+    "mass": 72.63,
+    "summary": "Used in fiber optics, infrared optics, and solar cells."
+  },
+  {
+    "symbol": "As",
+    "name": "Arsenic",
+    "number": 33,
+    "group": "metalloid",
+    "col": 15,
+    "row": 4,
+    "mass": 74.922,
+    "summary": "Famous poison, also used in semiconductors and wood preservatives."
+  },
+  {
+    "symbol": "Se",
+    "name": "Selenium",
+    "number": 34,
+    "group": "polyatomic",
+    "col": 16,
+    "row": 4,
+    "mass": 78.971,
+    "summary": "Used in glassmaking, electronics, and as a dietary supplement."
+  },
+  {
+    "symbol": "Br",
+    "name": "Bromine",
+    "number": 35,
+    "group": "diatomic",
+    "col": 17,
+    "row": 4,
+    "mass": 79.904,
+    "summary": "Only nonmetal that is liquid at room temperature."
+  },
+  {
+    "symbol": "Kr",
+    "name": "Krypton",
+    "number": 36,
+    "group": "noble",
+    "col": 18,
+    "row": 4,
+    "mass": 83.798,
+    "summary": "Used in high-speed photography and energy-efficient windows."
+  },
+  {
+    "symbol": "Rb",
+    "name": "Rubidium",
+    "number": 37,
+    "group": "alkali",
+    "col": 1,
+    "row": 5,
+    "mass": 85.468,
+    "summary": "Used in atomic clocks and as a propellant in ion engines."
+  },
+  {
+    "symbol": "Sr",
+    "name": "Strontium",
+    "number": 38,
+    "group": "alkaline",
+    "col": 2,
+    "row": 5,
+    "mass": 87.62,
+    "summary": "Gives fireworks their deep red color, used in magnets."
+  },
+  {
+    "symbol": "Y",
+    "name": "Yttrium",
+    "number": 39,
+    "group": "transition",
+    "col": 3,
+    "row": 5,
+    "mass": 88.906,
+    "summary": "Used in LEDs, phosphors, and high-temperature superconductors."
+  },
+  {
+    "symbol": "Zr",
+    "name": "Zirconium",
+    "number": 40,
+    "group": "transition",
+    "col": 4,
+    "row": 5,
+    "mass": 91.224,
+    "summary": "Used in nuclear reactors and as a gemstone (cubic zirconia)."
+  },
+  {
+    "symbol": "Nb",
+    "name": "Niobium",
+    "number": 41,
+    "group": "transition",
+    "col": 5,
+    "row": 5,
+    "mass": 92.906,
+    "summary": "Used in superconducting magnets and high-strength steel."
+  },
+  {
+    "symbol": "Mo",
+    "name": "Molybdenum",
+    "number": 42,
+    "group": "transition",
+    "col": 6,
+    "row": 5,
+    "mass": 95.95,
+    "summary": "Used in high-strength alloys and as a catalyst."
+  },
+  {
+    "symbol": "Tc",
+    "name": "Technetium",
+    "number": 43,
+    "group": "transition",
+    "col": 7,
+    "row": 5,
+    "mass": 98,
+    "summary": "First artificially produced element, used in medical imaging."
+  },
+  {
+    "symbol": "Ru",
+    "name": "Ruthenium",
+    "number": 44,
+    "group": "transition",
+    "col": 8,
+    "row": 5,
+    "mass": 101.07,
+    "summary": "Used in electrical contacts and as a catalyst."
+  },
+  {
+    "symbol": "Rh",
+    "name": "Rhodium",
+    "number": 45,
+    "group": "transition",
+    "col": 9,
+    "row": 5,
+    "mass": 102.91,
+    "summary": "Extremely rare metal used in catalytic converters and jewelry."
+  },
+  {
+    "symbol": "Pd",
+    "name": "Palladium",
+    "number": 46,
+    "group": "transition",
+    "col": 10,
+    "row": 5,
+    "mass": 106.42,
+    "summary": "Used in catalytic converters, electronics, and jewelry."
+  },
+  {
+    "symbol": "Ag",
+    "name": "Silver",
+    "number": 47,
+    "group": "transition",
+    "col": 11,
+    "row": 5,
+    "mass": 107.87,
+    "summary": "Best conductor of heat and electricity, used in jewelry and coins."
+  },
+  {
+    "symbol": "Cd",
+    "name": "Cadmium",
+    "number": 48,
+    "group": "transition",
+    "col": 12,
+    "row": 5,
+    "mass": 112.41,
+    "summary": "Used in batteries, pigments, and nuclear reactor control rods."
+  },
+  {
+    "symbol": "In",
+    "name": "Indium",
+    "number": 49,
+    "group": "post-transition",
+    "col": 13,
+    "row": 5,
+    "mass": 114.82,
+    "summary": "Used in touchscreens (as ITO) and low-melting alloys."
+  },
+  {
+    "symbol": "Sn",
+    "name": "Tin",
+    "number": 50,
+    "group": "post-transition",
+    "col": 14,
+    "row": 5,
+    "mass": 118.71,
+    "summary": "Used to coat other metals to prevent corrosion, found in solder."
+  },
+  {
+    "symbol": "Sb",
+    "name": "Antimony",
+    "number": 51,
+    "group": "metalloid",
+    "col": 15,
+    "row": 5,
+    "mass": 121.76,
+    "summary": "Used in flame retardants, batteries, and semiconductors."
+  },
+  {
+    "symbol": "Te",
+    "name": "Tellurium",
+    "number": 52,
+    "group": "metalloid",
+    "col": 16,
+    "row": 5,
+    "mass": 127.6,
+    "summary": "Used in solar panels, thermoelectric devices, and alloys."
+  },
+  {
+    "symbol": "I",
+    "name": "Iodine",
+    "number": 53,
+    "group": "diatomic",
+    "col": 17,
+    "row": 5,
+    "mass": 126.9,
+    "summary": "Essential for thyroid function, used as a disinfectant."
+  },
+  {
+    "symbol": "Xe",
+    "name": "Xenon",
+    "number": 54,
+    "group": "noble",
+    "col": 18,
+    "row": 5,
+    "mass": 131.29,
+    "summary": "Used in high-intensity lamps and as an anesthetic."
+  },
+  {
+    "symbol": "Cs",
+    "name": "Cesium",
+    "number": 55,
+    "group": "alkali",
+    "col": 1,
+    "row": 6,
+    "mass": 132.91,
+    "summary": "Used in atomic clocks and as a drilling fluid."
+  },
+  {
+    "symbol": "Ba",
+    "name": "Barium",
+    "number": 56,
+    "group": "alkaline",
+    "col": 2,
+    "row": 6,
+    "mass": 137.33,
+    "summary": "Used in drilling fluids, medical imaging, and fireworks."
+  },
+  {
+    "symbol": "La",
+    "name": "Lanthanum",
+    "number": 57,
+    "group": "lanthanide",
+    "col": 3,
+    "row": 9,
+    "mass": 138.91,
+    "summary": "Used in camera lenses, battery electrodes, and catalysts."
+  },
+  {
+    "symbol": "Ce",
+    "name": "Cerium",
+    "number": 58,
+    "group": "lanthanide",
+    "col": 4,
+    "row": 9,
+    "mass": 140.12,
+    "summary": "Most abundant rare-earth metal, used in catalytic converters."
+  },
+  {
+    "symbol": "Pr",
+    "name": "Praseodymium",
+    "number": 59,
+    "group": "lanthanide",
+    "col": 5,
+    "row": 9,
+    "mass": 140.91,
+    "summary": "Used in high-strength magnets and yellow glass goggles."
+  },
+  {
+    "symbol": "Nd",
+    "name": "Neodymium",
+    "number": 60,
+    "group": "lanthanide",
+    "col": 6,
+    "row": 9,
+    "mass": 144.24,
+    "summary": "Used to make the strongest permanent magnets known."
+  },
+  {
+    "symbol": "Pm",
+    "name": "Promethium",
+    "number": 61,
+    "group": "lanthanide",
+    "col": 7,
+    "row": 9,
+    "mass": 145,
+    "summary": "Radioactive element used in luminous paint and nuclear batteries."
+  },
+  {
+    "symbol": "Sm",
+    "name": "Samarium",
+    "number": 62,
+    "group": "lanthanide",
+    "col": 8,
+    "row": 9,
+    "mass": 150.36,
+    "summary": "Used in magnets, nuclear reactor control rods, and cancer treatment."
+  },
+  {
+    "symbol": "Eu",
+    "name": "Europium",
+    "number": 63,
+    "group": "lanthanide",
+    "col": 9,
+    "row": 9,
+    "mass": 151.96,
+    "summary": "Used in phosphors for TV screens and security ink."
+  },
+  {
+    "symbol": "Gd",
+    "name": "Gadolinium",
+    "number": 64,
+    "group": "lanthanide",
+    "col": 10,
+    "row": 9,
+    "mass": 157.25,
+    "summary": "Used in MRI contrast agents and nuclear reactor shielding."
+  },
+  {
+    "symbol": "Tb",
+    "name": "Terbium",
+    "number": 65,
+    "group": "lanthanide",
+    "col": 11,
+    "row": 9,
+    "mass": 158.93,
+    "summary": "Used in green phosphors, magnets, and sonar sensors."
+  },
+  {
+    "symbol": "Dy",
+    "name": "Dysprosium",
+    "number": 66,
+    "group": "lanthanide",
+    "col": 12,
+    "row": 9,
+    "mass": 162.5,
+    "summary": "Used in high-performance magnets and nuclear reactors."
+  },
+  {
+    "symbol": "Ho",
+    "name": "Holmium",
+    "number": 67,
+    "group": "lanthanide",
+    "col": 13,
+    "row": 9,
+    "mass": 164.93,
+    "summary": "Has the highest magnetic strength of any element."
+  },
+  {
+    "symbol": "Er",
+    "name": "Erbium",
+    "number": 68,
+    "group": "lanthanide",
+    "col": 14,
+    "row": 9,
+    "mass": 167.26,
+    "summary": "Used in fiber optic amplifiers and pink glass."
+  },
+  {
+    "symbol": "Tm",
+    "name": "Thulium",
+    "number": 69,
+    "group": "lanthanide",
+    "col": 15,
+    "row": 9,
+    "mass": 168.93,
+    "summary": "Rarest stable lanthanide, used in portable X-ray machines."
+  },
+  {
+    "symbol": "Yb",
+    "name": "Ytterbium",
+    "number": 70,
+    "group": "lanthanide",
+    "col": 16,
+    "row": 9,
+    "mass": 173.05,
+    "summary": "Used in lasers, portable X-ray sources, and atomic clocks."
+  },
+  {
+    "symbol": "Lu",
+    "name": "Lutetium",
+    "number": 71,
+    "group": "lanthanide",
+    "col": 17,
+    "row": 9,
+    "mass": 174.97,
+    "summary": "Used in PET scanners and as a catalyst in oil refineries."
+  },
+  {
+    "symbol": "Hf",
+    "name": "Hafnium",
+    "number": 72,
+    "group": "transition",
+    "col": 4,
+    "row": 6,
+    "mass": 178.49,
+    "summary": "Used in nuclear reactor control rods and microprocessors."
+  },
+  {
+    "symbol": "Ta",
+    "name": "Tantalum",
+    "number": 73,
+    "group": "transition",
+    "col": 5,
+    "row": 6,
+    "mass": 180.95,
+    "summary": "Used in capacitors for electronics and surgical implants."
+  },
+  {
+    "symbol": "W",
+    "name": "Tungsten",
+    "number": 74,
+    "group": "transition",
+    "col": 6,
+    "row": 6,
+    "mass": 183.84,
+    "summary": "Has the highest melting point of all metals, used in filaments."
+  },
+  {
+    "symbol": "Re",
+    "name": "Rhenium",
+    "number": 75,
+    "group": "transition",
+    "col": 7,
+    "row": 6,
+    "mass": 186.21,
+    "summary": "Used in jet engine components and as a catalyst."
+  },
+  {
+    "symbol": "Os",
+    "name": "Osmium",
+    "number": 76,
+    "group": "transition",
+    "col": 8,
+    "row": 6,
+    "mass": 190.23,
+    "summary": "Densest naturally occurring element, used in electrical contacts."
+  },
+  {
+    "symbol": "Ir",
+    "name": "Iridium",
+    "number": 77,
+    "group": "transition",
+    "col": 9,
+    "row": 6,
+    "mass": 192.22,
+    "summary": "Most corrosion-resistant metal, used in spark plugs and crucibles."
+  },
+  {
+    "symbol": "Pt",
+    "name": "Platinum",
+    "number": 78,
+    "group": "transition",
+    "col": 10,
+    "row": 6,
+    "mass": 195.08,
+    "summary": "Used in catalytic converters, jewelry, and cancer drugs."
+  },
+  {
+    "symbol": "Au",
+    "name": "Gold",
+    "number": 79,
+    "group": "transition",
+    "col": 11,
+    "row": 6,
+    "mass": 196.97,
+    "summary": "Highly valued for jewelry, currency, and as a conductor."
+  },
+  {
+    "symbol": "Hg",
+    "name": "Mercury",
+    "number": 80,
+    "group": "transition",
+    "col": 12,
+    "row": 6,
+    "mass": 200.59,
+    "summary": "Only metal that is liquid at room temperature."
+  },
+  {
+    "symbol": "Tl",
+    "name": "Thallium",
+    "number": 81,
+    "group": "post-transition",
+    "col": 13,
+    "row": 6,
+    "mass": 204.38,
+    "summary": "Highly toxic metal once used in rat poison."
+  },
+  {
+    "symbol": "Pb",
+    "name": "Lead",
+    "number": 82,
+    "group": "post-transition",
+    "col": 14,
+    "row": 6,
+    "mass": 207.2,
+    "summary": "Dense metal used in batteries, radiation shielding, and weights."
+  },
+  {
+    "symbol": "Bi",
+    "name": "Bismuth",
+    "number": 83,
+    "group": "post-transition",
+    "col": 15,
+    "row": 6,
+    "mass": 208.98,
+    "summary": "Used in medicines (Pepto-Bismol) and low-melting alloys."
+  },
+  {
+    "symbol": "Po",
+    "name": "Polonium",
+    "number": 84,
+    "group": "post-transition",
+    "col": 16,
+    "row": 6,
+    "mass": 209,
+    "summary": "Highly radioactive element used as a heat source in space."
+  },
+  {
+    "symbol": "At",
+    "name": "Astatine",
+    "number": 85,
+    "group": "metalloid",
+    "col": 17,
+    "row": 6,
+    "mass": 210,
+    "summary": "Rarest naturally occurring element on Earth's crust."
+  },
+  {
+    "symbol": "Rn",
+    "name": "Radon",
+    "number": 86,
+    "group": "noble",
+    "col": 18,
+    "row": 6,
+    "mass": 222,
+    "summary": "Radioactive noble gas that can accumulate in basements."
+  },
+  {
+    "symbol": "Fr",
+    "name": "Francium",
+    "number": 87,
+    "group": "alkali",
+    "col": 1,
+    "row": 7,
+    "mass": 223,
+    "summary": "Extremely rare and unstable alkali metal."
+  },
+  {
+    "symbol": "Ra",
+    "name": "Radium",
+    "number": 88,
+    "group": "alkaline",
+    "col": 2,
+    "row": 7,
+    "mass": 226,
+    "summary": "Radioactive metal once used for luminous watch dials."
+  },
+  {
+    "symbol": "Ac",
+    "name": "Actinium",
+    "number": 89,
+    "group": "actinide",
+    "col": 3,
+    "row": 10,
+    "mass": 227,
+    "summary": "Radioactive element used in cancer therapy and as a heat source."
+  },
+  {
+    "symbol": "Th",
+    "name": "Thorium",
+    "number": 90,
+    "group": "actinide",
+    "col": 4,
+    "row": 10,
+    "mass": 232.04,
+    "summary": "Potential future fuel for nuclear reactors, more abundant than uranium."
+  },
+  {
+    "symbol": "Pa",
+    "name": "Protactinium",
+    "number": 91,
+    "group": "actinide",
+    "col": 5,
+    "row": 10,
+    "mass": 231.04,
+    "summary": "Rare, radioactive metal found in uranium ores."
+  },
+  {
+    "symbol": "U",
+    "name": "Uranium",
+    "number": 92,
+    "group": "actinide",
+    "col": 6,
+    "row": 10,
+    "mass": 238.03,
+    "summary": "Primary fuel for nuclear power plants and weapons."
+  },
+  {
+    "symbol": "Np",
+    "name": "Neptunium",
+    "number": 93,
+    "group": "actinide",
+    "col": 7,
+    "row": 10,
+    "mass": 237,
+    "summary": "First transuranic element, used in neutron detectors."
+  },
+  {
+    "symbol": "Pu",
+    "name": "Plutonium",
+    "number": 94,
+    "group": "actinide",
+    "col": 8,
+    "row": 10,
+    "mass": 244,
+    "summary": "Used in nuclear weapons and as a power source for space probes."
+  },
+  {
+    "symbol": "Am",
+    "name": "Americium",
+    "number": 95,
+    "group": "actinide",
+    "col": 9,
+    "row": 10,
+    "mass": 243,
+    "summary": "Used in household smoke detectors."
+  },
+  {
+    "symbol": "Cm",
+    "name": "Curium",
+    "number": 96,
+    "group": "actinide",
+    "col": 10,
+    "row": 10,
+    "mass": 247,
+    "summary": "Used as a power source and in alpha particle X-ray spectrometers."
+  },
+  {
+    "symbol": "Bk",
+    "name": "Berkelium",
+    "number": 97,
+    "group": "actinide",
+    "col": 11,
+    "row": 10,
+    "mass": 247,
+    "summary": "Used primarily for scientific research."
+  },
+  {
+    "symbol": "Cf",
+    "name": "Californium",
+    "number": 98,
+    "group": "actinide",
+    "col": 12,
+    "row": 10,
+    "mass": 251,
+    "summary": "Used as a neutron source to start nuclear reactors."
+  },
+  {
+    "symbol": "Es",
+    "name": "Einsteinium",
+    "number": 99,
+    "group": "actinide",
+    "col": 13,
+    "row": 10,
+    "mass": 252,
+    "summary": "Named after Albert Einstein, used for scientific research."
+  },
+  {
+    "symbol": "Fm",
+    "name": "Fermium",
+    "number": 100,
+    "group": "actinide",
+    "col": 14,
+    "row": 10,
+    "mass": 257,
+    "summary": "Named after Enrico Fermi, used for scientific research."
+  },
+  {
+    "symbol": "Md",
+    "name": "Mendelevium",
+    "number": 101,
+    "group": "actinide",
+    "col": 15,
+    "row": 10,
+    "mass": 258,
+    "summary": "Named after Dmitri Mendeleev, creator of the periodic table."
+  },
+  {
+    "symbol": "No",
+    "name": "Nobelium",
+    "number": 102,
+    "group": "actinide",
+    "col": 16,
+    "row": 10,
+    "mass": 259,
+    "summary": "Named after Alfred Nobel, used for scientific research."
+  },
+  {
+    "symbol": "Lr",
+    "name": "Lawrencium",
+    "number": 103,
+    "group": "actinide",
+    "col": 17,
+    "row": 10,
+    "mass": 262,
+    "summary": "Named after Ernest Lawrence, used for scientific research."
+  },
+  {
+    "symbol": "Rf",
+    "name": "Rutherfordium",
+    "number": 104,
+    "group": "transition",
+    "col": 4,
+    "row": 7,
+    "mass": 267,
+    "summary": "Synthetic radioactive element named after Ernest Rutherford."
+  },
+  {
+    "symbol": "Db",
+    "name": "Dubnium",
+    "number": 105,
+    "group": "transition",
+    "col": 5,
+    "row": 7,
+    "mass": 268,
+    "summary": "Synthetic radioactive element named after Dubna, Russia."
+  },
+  {
+    "symbol": "Sg",
+    "name": "Seaborgium",
+    "number": 106,
+    "group": "transition",
+    "col": 6,
+    "row": 7,
+    "mass": 269,
+    "summary": "Synthetic radioactive element named after Glenn Seaborg."
+  },
+  {
+    "symbol": "Bh",
+    "name": "Bohrium",
+    "number": 107,
+    "group": "transition",
+    "col": 7,
+    "row": 7,
+    "mass": 270,
+    "summary": "Synthetic radioactive element named after Niels Bohr."
+  },
+  {
+    "symbol": "Hs",
+    "name": "Hassium",
+    "number": 108,
+    "group": "transition",
+    "col": 8,
+    "row": 7,
+    "mass": 269,
+    "summary": "Synthetic radioactive element named after Hesse, Germany."
+  },
+  {
+    "symbol": "Mt",
+    "name": "Meitnerium",
+    "number": 109,
+    "group": "unknown,",
+    "col": 9,
+    "row": 7,
+    "mass": 278,
+    "summary": "Synthetic radioactive element named after Lise Meitner."
+  },
+  {
+    "symbol": "Ds",
+    "name": "Darmstadtium",
+    "number": 110,
+    "group": "unknown,",
+    "col": 10,
+    "row": 7,
+    "mass": 281,
+    "summary": "Synthetic radioactive element named after Darmstadt, Germany."
+  },
+  {
+    "symbol": "Rg",
+    "name": "Roentgenium",
+    "number": 111,
+    "group": "unknown,",
+    "col": 11,
+    "row": 7,
+    "mass": 282,
+    "summary": "Synthetic radioactive element named after Wilhelm Röntgen."
+  },
+  {
+    "symbol": "Cn",
+    "name": "Copernicium",
+    "number": 112,
+    "group": "transition",
+    "col": 12,
+    "row": 7,
+    "mass": 285,
+    "summary": "Synthetic radioactive element named after Nicolaus Copernicus."
+  },
+  {
+    "symbol": "Nh",
+    "name": "Nihonium",
+    "number": 113,
+    "group": "unknown,",
+    "col": 13,
+    "row": 7,
+    "mass": 286,
+    "summary": "Synthetic radioactive element named after Japan (Nihon)."
+  },
+  {
+    "symbol": "Fl",
+    "name": "Flerovium",
+    "number": 114,
+    "group": "post-transition",
+    "col": 14,
+    "row": 7,
+    "mass": 289,
+    "summary": "Synthetic radioactive element named after Georgy Flyorov."
+  },
+  {
+    "symbol": "Mc",
+    "name": "Moscovium",
+    "number": 115,
+    "group": "unknown,",
+    "col": 15,
+    "row": 7,
+    "mass": 290,
+    "summary": "Synthetic radioactive element named after Moscow, Russia."
+  },
+  {
+    "symbol": "Lv",
+    "name": "Livermorium",
+    "number": 116,
+    "group": "unknown,",
+    "col": 16,
+    "row": 7,
+    "mass": 293,
+    "summary": "Synthetic radioactive element named after Livermore, California."
+  },
+  {
+    "symbol": "Ts",
+    "name": "Tennessine",
+    "number": 117,
+    "group": "unknown,",
+    "col": 17,
+    "row": 7,
+    "mass": 294,
+    "summary": "Synthetic radioactive element named after Tennessee, USA."
+  },
+  {
+    "symbol": "Og",
+    "name": "Oganesson",
+    "number": 118,
+    "group": "unknown,",
+    "col": 18,
+    "row": 7,
+    "mass": 294,
+    "summary": "Synthetic radioactive element named after Yuri Oganessian."
+  },
+  {
+    "symbol": "Uue",
+    "name": "Ununennium",
+    "number": 119,
+    "group": "unknown,",
+    "col": 1,
+    "row": 8,
+    "mass": 315,
+    "summary": "Hypothetical element, first in the eighth period."
+  }
+];

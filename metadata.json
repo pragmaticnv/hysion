@@ -1,0 +1,12 @@
+{
+  "name": "HyperVision",
+  "description": "Advanced 3D Educational Platform with AI-Guided Science Labs, Virtual Circuit Builder, and Neural Voice Assistant",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "xr-spatial-tracking"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
