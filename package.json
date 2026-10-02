@@ -1,7 +1,8 @@
 {
-  "name": "react-example",
+  "name": "hypervision-ai",
+  "author": "Nikhil Vashishtha",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
@@ -32,7 +33,6 @@
     "express": "^4.22.1",
     "firebase": "^12.10.0",
     "framer-motion": "^12.35.2",
-    "framer-motion-3d": "^12.4.13",
     "lucide-react": "^0.546.0",
     "motion": "^12.23.24",
     "perfect-freehand": "^1.2.3",

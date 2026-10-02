@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Stars, Sphere, MeshDistortMaterial, Html } from '@react-three/drei';
-import { motion } from 'framer-motion-3d';
+
 import { Hand, Camera, Info, Sparkles, Zap, Globe, Sun, CircleDot, MoveRight } from 'lucide-react';
 import * as THREE from 'three';
 import { GlobeModel } from '../models/GlobeModel';

@@ -101,6 +101,7 @@ const MainDashboardMemo = React.memo(MainDashboard);
 import { NetworkStatusAlert } from './components/NetworkStatusAlert';
 import { TeacherTranscriptionBar } from './components/TeacherTranscriptionBar';
 import { TeacherExplanationPanel } from './components/voice/TeacherExplanationPanel';
+import { AuthorWatermark } from './components/AuthorWatermark';
 
 const TeacherTranscriptionBarMemo = React.memo(TeacherTranscriptionBar);
 const TeacherExplanationPanelMemo = React.memo(TeacherExplanationPanel);
@@ -859,6 +860,7 @@ export default function App() {
           </div>
         </div>
       </div>
+      <AuthorWatermark />
     </ErrorBoundary>
   );
 }
